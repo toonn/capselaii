@@ -22,11 +22,11 @@ nit (Node val children) = val
 c :: Graph Integer -> Tree Integer -> Integer -> Integer -> ArCir
 c graph (Node root []) i j = "x" ++ (show j)
 
-c graph (Node root children) i j =
+c graph (Node root children) i j ="x"++show(j)++"("++
     prod
-        [(sigma ["x"++show(j)++"("++(c graph child (nit child) jprime)++")"
+        [(sigma ["("++(c graph child (nit child) jprime)++")"
                     | (jj, jprime) <- graph, jj == j])
-            | child <- children]
+            | child <- children] ++")"
 
 q :: Graph Integer -> Tree Integer -> Integer -> Integer -> [ArCir]
 q graph tree k n = [c graph tree i j | i <- [1..k], j <- [1..n]]
